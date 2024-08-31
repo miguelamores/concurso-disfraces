@@ -14,34 +14,44 @@ export default async function Home() {
 
   return (
     <SessionProvider session={session}>
-      <main className='flex min-h-screen flex-col items-center justify-between p-4'>
-        <h1 className='mb-10 text-7xl text-center font-stronger text-amber-300'>
-          Concurso de disfraces
-        </h1>
-        {session?.user ? (
-          <>
-            <div className='flex items-center justify-center gap-4'>
-              {session.user.image && (
-                <img
-                  className='rounded-full w-12 h-12'
-                  src={session.user.image}
-                  alt={`Avatar de ${session.user.name}`}
-                />
-              )}
-              <p className='text-2xl font-mono'>Hola, {session.user.name}</p>
-            </div>
-            <Logout />
-          </>
-        ) : (
-          <Login />
-        )}
-        <ul className='list-none gap-10 flex flex-col justify-center items-start'>
-          {data.map(item => (
-            <li key={item.id}>
-              <Person person={item} userVoted={userVoted} />
-            </li>
-          ))}
-        </ul>
+      <main className='flex min-h-screen flex-col items-center justify-between px-4 relative z-50 overflow-hidden'>
+        <section className='z-50 flex flex-col items-center'>
+          <h1 className='mb-10 text-7xl text-center font-stronger text-amber-300'>
+            Concurso de disfraces
+          </h1>
+          {session?.user ? (
+            <>
+              <div className='flex items-center justify-center gap-4'>
+                {session.user.image && (
+                  <img
+                    className='rounded-full w-12 h-12'
+                    src={session.user.image}
+                    alt={`Avatar de ${session.user.name}`}
+                  />
+                )}
+                <p className='text-2xl font-mono'>Hola, {session.user.name}</p>
+              </div>
+              <Logout />
+            </>
+          ) : (
+            <Login />
+          )}
+          <ul className='list-none gap-10 flex flex-col justify-center items-start'>
+            {data.map(item => (
+              <li key={item.id}>
+                <Person person={item} userVoted={userVoted} />
+              </li>
+            ))}
+          </ul>
+        </section>
+        <video
+          autoPlay
+          loop
+          muted
+          className='fixed z-10 w-auto min-w-full h-auto max-w-none bg-cover opacity-20'
+        >
+          <source src='/vide-bg.mp4' type='video/mp4' />
+        </video>
       </main>
     </SessionProvider>
   );
