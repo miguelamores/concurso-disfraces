@@ -4,3 +4,8 @@ interface Person {
   custom: string;
   image: string;
 }
+
+interface UserVoted {
+  id: string;
+  voteId: string;
+}

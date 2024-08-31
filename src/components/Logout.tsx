@@ -1,9 +1,10 @@
-import { signOut } from '@/auth';
+'use client';
+
+import { logout } from '@/actions';
 
 const Logout = () => {
   const handleSubmit = async () => {
-    'use server';
-    await signOut();
+    await logout();
   };
 
   return (

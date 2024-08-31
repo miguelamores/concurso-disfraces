@@ -1,9 +1,10 @@
-import { signIn } from '@/auth';
+'use client';
+
+import { login } from '@/actions';
 
 const Login = () => {
   const handleSubmit = async () => {
-    'use server';
-    await signIn();
+    await login();
   };
 
   return (

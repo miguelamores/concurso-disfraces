@@ -1,17 +1,31 @@
 'use client';
+import { useSession } from 'next-auth/react';
+import { addVote } from '@/actions';
+import { useState } from 'react';
 
-import { addVote, getData } from '@/actions';
+const Person = ({
+  person,
+  userVoted,
+}: {
+  person: Person;
+  userVoted: UserVoted;
+}) => {
+  const session = useSession();
+  const [userAlreadyVoted, setUserAlreadyVoted] = useState(userVoted);
 
-const Person = ({ person }: { person: Person }) => {
   const handleClick = async () => {
-    await getData();
-    // const res = await addVote('migue', 'Jane Smith');
-    // console.log('res: ', res);
+    if (session.data?.user?.email == null) return;
+    try {
+      const res = await addVote(session.data?.user?.email, person.name);
+      setUserAlreadyVoted(res[0]);
+    } catch (error) {
+      console.error('error: ', error);
+    }
   };
 
   return (
     <form action={handleClick}>
-      <button type='submit'>
+      <button type='submit' disabled={!!userVoted}>
         <p className='text-xl'>
           {person.name} - {person.custom}
         </p>
@@ -22,6 +36,11 @@ const Person = ({ person }: { person: Person }) => {
           alt={`image of ${person.name}`}
         />
       </button>
+      {userAlreadyVoted?.voteId === person.name && (
+        <p className='pointer-events-none z-50 absolute inset-0 text-center flex justify-center items-center text-5xl text-slate-100 bg-slate-700/80'>
+          Votaste por: John Doe
+        </p>
+      )}
     </form>
   );
 };
