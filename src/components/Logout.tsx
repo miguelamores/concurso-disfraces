@@ -9,7 +9,9 @@ const Logout = () => {
 
   return (
     <form action={handleSubmit}>
-      <button type='submit'>Cerrar sesión</button>
+      <button type='submit' className='text-amber-400 mb-10 font-mono'>
+        Cerrar sesión
+      </button>
     </form>
   );
 };

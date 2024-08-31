@@ -6,12 +6,18 @@ import { signIn, signOut } from './auth';
 import { eq } from 'drizzle-orm';
 
 export const getUserVote = async (email: string) => {
-  const result = await db
-    .select()
-    .from(votesTable)
-    .where(eq(votesTable.id, email));
-  console.log('result: ', result);
-  return result;
+  if (email == null) return null;
+  try {
+    const result = await db
+      .select()
+      .from(votesTable)
+      .where(eq(votesTable.id, email));
+    console.log('result: ', result);
+    return result;
+  } catch (error) {
+    console.error('error user vote: ', error);
+    throw error;
+  }
 };
 
 export const addVote = async (id: string, voteId: string) => {
@@ -27,9 +33,19 @@ export const addVote = async (id: string, voteId: string) => {
 };
 
 export const login = async () => {
-  await signIn();
+  try {
+    await signIn();
+  } catch (error) {
+    console.error('error login: ', error);
+    throw error;
+  }
 };
 
 export const logout = async () => {
-  await signOut();
+  try {
+    await signOut();
+  } catch (error) {
+    console.error('error logout: ', error);
+    throw error;
+  }
 };

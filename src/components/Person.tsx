@@ -1,14 +1,14 @@
 'use client';
 import { useSession } from 'next-auth/react';
 import { addVote } from '@/actions';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Person = ({
   person,
   userVoted,
 }: {
   person: Person;
-  userVoted: UserVoted;
+  userVoted: UserVoted | null;
 }) => {
   const session = useSession();
   const [userAlreadyVoted, setUserAlreadyVoted] = useState(userVoted);
@@ -20,24 +20,29 @@ const Person = ({
       setUserAlreadyVoted(res[0]);
     } catch (error) {
       console.error('error: ', error);
+      setUserAlreadyVoted(null);
     }
   };
 
+  useEffect(() => {
+    setUserAlreadyVoted(userVoted);
+  }, [userVoted]);
+
   return (
     <form action={handleClick}>
-      <button type='submit' disabled={!!userVoted}>
-        <p className='text-xl'>
+      <button type='submit' disabled={!!userAlreadyVoted}>
+        <p className='text-xl font-mono font-semibold'>
           {person.name} - {person.custom}
         </p>
 
         <img
-          className='h-auto w-full'
+          className='h-auto w-full rounded-md'
           src={person.image}
           alt={`image of ${person.name}`}
         />
       </button>
-      {userAlreadyVoted?.voteId === person.name && (
-        <p className='pointer-events-none z-50 absolute inset-0 text-center flex justify-center items-center text-5xl text-slate-100 bg-slate-700/80'>
+      {userAlreadyVoted?.voteId === person.name && session.data != null && (
+        <p className='font-stronger pointer-events-none z-50 absolute inset-0 text-center flex justify-center items-center text-5xl text-slate-100 bg-slate-700/80'>
           Votaste por: John Doe
         </p>
       )}

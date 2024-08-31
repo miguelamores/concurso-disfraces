@@ -10,22 +10,26 @@ export default async function Home() {
   const session = await auth();
   const vote = await getUserVote(session?.user?.email);
 
-  const userVoted = vote[0];
+  const [userVoted = null] = vote ?? [];
 
   return (
     <SessionProvider session={session}>
       <main className='flex min-h-screen flex-col items-center justify-between p-4'>
-        <h1 className='mb-10 text-4xl text-center'>Concurso de disfraces</h1>
+        <h1 className='mb-10 text-7xl text-center font-stronger text-amber-300'>
+          Concurso de disfraces
+        </h1>
         {session?.user ? (
           <>
-            {session.user.image && (
-              <img
-                className='rounded-full w-12 h-12'
-                src={session.user.image}
-                alt={`Avatar de ${session.user.name}`}
-              />
-            )}
-            <p className='mb-10'>Hola, {session.user.name}</p>
+            <div className='flex items-center justify-center gap-4'>
+              {session.user.image && (
+                <img
+                  className='rounded-full w-12 h-12'
+                  src={session.user.image}
+                  alt={`Avatar de ${session.user.name}`}
+                />
+              )}
+              <p className='text-2xl font-mono'>Hola, {session.user.name}</p>
+            </div>
             <Logout />
           </>
         ) : (
