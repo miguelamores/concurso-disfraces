@@ -37,7 +37,7 @@ export default async function Home() {
         )}
         <ul className='list-none gap-10 flex flex-col justify-center items-start'>
           {data.map(item => (
-            <li key={item.id} className='relative'>
+            <li key={item.id}>
               <Person person={item} userVoted={userVoted} />
             </li>
           ))}
