@@ -16,6 +16,11 @@
   }
 }
 
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -29,5 +34,12 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Stronger';
+    src: url('/fonts/Stronger.ttf') format('truetype');
   }
 }
