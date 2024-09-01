@@ -44,7 +44,7 @@ const Person = ({
           />
           {userAlreadyVoted?.voteId === person.name && session.data != null && (
             <p className='w-full font-stronger pointer-events-none z-50 absolute inset-0 text-center flex justify-center items-center text-5xl text-slate-100 bg-slate-700/80'>
-              Votaste por: John Doe
+              Votaste por: {person.name}
             </p>
           )}
         </picture>
