@@ -3,7 +3,7 @@
 import { db } from './db/drizzle';
 import { votesTable } from './db/schema';
 import { signIn, signOut } from './auth';
-import { eq } from 'drizzle-orm';
+import { eq, count } from 'drizzle-orm';
 
 export const getUserVote = async (email: string) => {
   if (email == null) return null;
@@ -29,6 +29,22 @@ export const addVote = async (id: string, voteId: string) => {
     return result;
   } catch (error) {
     throw Error(error.message);
+  }
+};
+
+export const getVotes = async () => {
+  try {
+    return await db
+      .select({
+        id: votesTable.id,
+        voteId: votesTable.voteId,
+        voteIdCount: count(votesTable.voteId),
+      })
+      .from(votesTable)
+      .groupBy(votesTable.voteId)
+      .all();
+  } catch (error) {
+    throw error;
   }
 };
 
