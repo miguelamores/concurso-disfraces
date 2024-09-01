@@ -17,7 +17,7 @@ export default async function Home() {
       <main className='flex min-h-screen flex-col items-center justify-between px-4 relative z-50 overflow-hidden'>
         <section className='z-50 flex flex-col items-center'>
           <h1 className='mb-10 text-7xl text-center font-stronger text-amber-300'>
-            Concurso de disfraces
+            Vota al mejor disfraz
           </h1>
           {session?.user ? (
             <>
