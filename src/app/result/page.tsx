@@ -1,18 +1,5 @@
-'use client';
-
-import { type ChartConfig, ChartContainer } from '@/components/ui/chart';
-import { Bar, BarChart } from 'recharts';
-
-const chartConfig = {
-  desktop: {
-    label: 'Desktop',
-    color: '#2563eb',
-  },
-  mobile: {
-    label: 'Mobile',
-    color: '#60a5fa',
-  },
-} satisfies ChartConfig;
+import { getVotes } from '@/actions';
+import ChartVotes from '@/components/ChartVotes';
 
 const chartData = [
   { month: 'January', mobile: 80 },
@@ -22,15 +9,12 @@ const chartData = [
   { month: 'May', mobile: 130 },
 ];
 
-const result = () => {
+const result = async () => {
+  const votes = await getVotes();
+  console.log(': ------ ', votes);
   return (
     <section className='p-10 h-screen'>
-      <ChartContainer config={chartConfig} className='h-3/4 w-full'>
-        <BarChart accessibilityLayer data={chartData}>
-          {/* <Bar dataKey='desktop' fill='var(--color-desktop)' radius={4} /> */}
-          <Bar dataKey='mobile' fill='var(--color-mobile)' radius={4} />
-        </BarChart>
-      </ChartContainer>
+      <ChartVotes votes={votes} />
     </section>
   );
 };
