@@ -49,3 +49,22 @@ export const logout = async () => {
     throw error;
   }
 };
+
+export const insertFakeData = async () => {
+  const fakeData = [
+    { id: 'miguel@example.com', voteId: 'John Doe' },
+    { id: 'juan@example.com', voteId: 'Jane Smith' },
+    { id: 'maria@example.com', voteId: 'John Doe' },
+    { id: 'pedro@example.com', voteId: 'John Doe' },
+    { id: 'luisa@example.com', voteId: 'Jane Smith' },
+    { id: 'carlos@example.com', voteId: 'Emily Wilson' },
+    { id: 'ana@example.com', voteId: 'Emily Wilson' },
+    { id: 'julia@example.com', voteId: 'John Doe' },
+  ];
+
+  try {
+    await db.insert(votesTable).values(fakeData);
+  } catch (error) {
+    throw error;
+  }
+};

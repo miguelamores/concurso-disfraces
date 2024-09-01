@@ -32,6 +32,9 @@ export default async function Home() {
                 <p className='text-2xl font-mono'>Hola, {session.user.name}</p>
               </div>
               <Logout />
+              <p className='font-mono mb-4 text-center'>
+                A continuación selecciona el mejor disfraz:
+              </p>
             </>
           ) : (
             <Login />

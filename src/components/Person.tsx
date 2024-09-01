@@ -1,6 +1,6 @@
 'use client';
 import { useSession } from 'next-auth/react';
-import { addVote } from '@/actions';
+import { addVote, insertFakeData } from '@/actions';
 import { useEffect, useState } from 'react';
 
 const Person = ({
@@ -14,6 +14,7 @@ const Person = ({
   const [userAlreadyVoted, setUserAlreadyVoted] = useState(userVoted);
 
   const handleClick = async () => {
+    // await insertFakeData();
     if (session.data?.user?.email == null) return;
     try {
       const res = await addVote(session.data?.user?.email, person.name);
