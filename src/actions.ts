@@ -28,7 +28,7 @@ export const addVote = async (id: string, voteId: string) => {
       .returning();
     return result;
   } catch (error) {
-    throw Error(error.message);
+    throw error;
   }
 };
 
