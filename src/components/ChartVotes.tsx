@@ -13,7 +13,11 @@ const chartConfig = {
 const ChartVotes = ({ votes }: { votes: UserVoted[] }) => {
   console.log('votes: ', votes);
   if (!votes || votes.length === 0) {
-    return <div>No se encontraron votos.</div>;
+    return (
+      <div className='flex items-center justify-center font-stronger text-4xl'>
+        No se encontraron votos.
+      </div>
+    );
   }
 
   return (
@@ -22,14 +26,15 @@ const ChartVotes = ({ votes }: { votes: UserVoted[] }) => {
       className='min-h-[200px] h-full w-full min-w-full'
     >
       <BarChart accessibilityLayer data={votes}>
-        <CartesianGrid vertical={false} x1={2} />
+        <CartesianGrid vertical={false} />
         <XAxis
           dataKey='voteId'
           tickLine={false}
-          tickMargin={20}
+          tickMargin={10}
           axisLine={false}
-          className='text-neutral-100'
-          // tickFormatter={value => value}
+          angle={-10}
+          className='z-40'
+          tickFormatter={value => value.slice(0, 5)}
         />
         <YAxis
           dataKey={'voteIdCount'}

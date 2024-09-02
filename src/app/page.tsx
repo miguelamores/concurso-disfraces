@@ -29,7 +29,9 @@ export default async function Home() {
                     alt={`Avatar de ${session.user.name}`}
                   />
                 )}
-                <p className='text-2xl font-mono'>Hola, {session.user.name}</p>
+                <p className='text-2xl font-mono text-center'>
+                  Hola, {session.user.name}
+                </p>
               </div>
               <Logout />
               <p className='font-mono mb-4 text-center'>

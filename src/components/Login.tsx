@@ -9,7 +9,9 @@ const Login = () => {
 
   return (
     <form action={handleSubmit} className='flex flex-col items-center'>
-      <p className='font-mono mb-5'>Para votar necesitas iniciar sesión</p>
+      <p className='font-mono mb-5 text-center'>
+        Para votar necesitas iniciar sesión
+      </p>
       <button
         type='submit'
         className='border-2 p-3 bg-slate-900 text-slate-100 mb-10 font-mono flex items-center justify-center gap-3 border-amber-300'
