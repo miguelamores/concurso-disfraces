@@ -19,7 +19,7 @@ const ChartVotes = ({ votes }: { votes: UserVoted[] }) => {
   return (
     <ChartContainer
       config={chartConfig}
-      className='min-h-[200px] h-3/4 w-full min-w-full text-gray-50'
+      className='min-h-[200px] h-full w-full min-w-full'
     >
       <BarChart accessibilityLayer data={votes}>
         <CartesianGrid vertical={false} x1={2} />
