@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link';
+import { Fragment } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,8 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
-        <header className='flex items-center justify-between px-5 py-5'>
+      <body className={`${inter.className} relative`}>
+        <header className='sticky top-0 overflow-hidden z-50 flex items-center justify-between px-5 py-2 bg-amber-300/95'>
           <Link href='/'>
             <svg
               className='w-10 h-10 text-white dark:text-white'

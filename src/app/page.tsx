@@ -14,8 +14,8 @@ export default async function Home() {
 
   return (
     <SessionProvider session={session}>
-      <main className='flex min-h-screen flex-col items-center justify-between px-4 relative z-50 overflow-hidden'>
-        <section className='z-50 flex flex-col items-center'>
+      <main className='flex min-h-screen flex-col items-center justify-between px-4 relative z-20 overflow-hidden'>
+        <section className='z-20 flex flex-col items-center'>
           <h1 className='mb-10 text-7xl text-center font-stronger text-amber-300'>
             Vota al mejor disfraz
           </h1>
@@ -51,7 +51,7 @@ export default async function Home() {
           autoPlay
           loop
           muted
-          className='fixed z-10 w-auto min-w-full h-auto max-w-none bg-cover opacity-20'
+          className='fixed z-10 w-auto min-w-full h-screen max-w-none bg-cover opacity-20'
         >
           <source src='/vide-bg.mp4' type='video/mp4' />
         </video>
