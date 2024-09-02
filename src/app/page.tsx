@@ -51,7 +51,7 @@ export default async function Home() {
           autoPlay
           loop
           muted
-          className='fixed z-10 w-auto min-w-full h-screen max-w-none bg-cover opacity-20'
+          className='top-0 fixed -z-10 w-auto min-w-full h-screen max-w-none bg-cover opacity-20'
         >
           <source src='/vide-bg.mp4' type='video/mp4' />
         </video>

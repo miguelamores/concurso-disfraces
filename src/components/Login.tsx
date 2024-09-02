@@ -15,7 +15,7 @@ const Login = () => {
         className='border-2 p-3 bg-slate-900 text-slate-100 mb-10 font-mono flex items-center justify-center gap-3 border-amber-300'
       >
         <svg
-          className='w-6 h-6 text-gray-800 dark:text-white'
+          className='w-6 h-6 text-white dark:text-white'
           aria-hidden='true'
           xmlns='http://www.w3.org/2000/svg'
           width='24'
