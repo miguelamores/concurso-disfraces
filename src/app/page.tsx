@@ -1,7 +1,7 @@
 import Person from '@/components/Person';
 import data from '../../public/data.json';
 import { getUserVote } from '@/actions';
-import { auth, signOut } from '@/auth';
+import { auth } from '@/auth';
 import Login from '@/components/Login';
 import Logout from '@/components/Logout';
 import { SessionProvider } from 'next-auth/react';

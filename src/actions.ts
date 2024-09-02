@@ -5,7 +5,7 @@ import { votesTable } from './db/schema';
 import { signIn, signOut } from './auth';
 import { eq, count } from 'drizzle-orm';
 
-export const getUserVote = async (email: string) => {
+export const getUserVote = async (email: string | null | undefined) => {
   if (email == null) return null;
   try {
     const result = await db
