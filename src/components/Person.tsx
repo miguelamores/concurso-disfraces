@@ -2,6 +2,7 @@
 import { useSession } from 'next-auth/react';
 import { addVote, insertFakeData } from '@/actions';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const Person = ({
   person,
@@ -37,8 +38,10 @@ const Person = ({
         </p>
 
         <picture className='relative block rounded-md overflow-hidden'>
-          <img
-            className='h-auto w-full'
+          <Image
+            width={250}
+            height={250}
+            className='h-auto w-screen'
             src={person.image}
             alt={`image of ${person.name}`}
           />
