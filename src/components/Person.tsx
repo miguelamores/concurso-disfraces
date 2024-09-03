@@ -36,9 +36,9 @@ const Person = ({
           {person.name} - {person.custom}
         </p>
 
-        <picture className='relative block'>
+        <picture className='relative block rounded-md overflow-hidden'>
           <img
-            className='h-auto w-full rounded-md'
+            className='h-auto w-full'
             src={person.image}
             alt={`image of ${person.name}`}
           />
