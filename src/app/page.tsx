@@ -21,7 +21,7 @@ export default async function Home() {
           </h1>
           {session?.user ? (
             <>
-              <div className='flex items-center justify-center gap-4'>
+              <div className='flex flex-col items-center justify-center gap-4'>
                 {session.user.image && (
                   <img
                     className='rounded-full w-12 h-12'
