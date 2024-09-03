@@ -3,7 +3,7 @@
 import { db } from './db/drizzle';
 import { votesTable } from './db/schema';
 import { signIn, signOut } from './auth';
-import { eq, count } from 'drizzle-orm';
+import { eq, count, desc } from 'drizzle-orm';
 
 export const getUserVote = async (email: string | null | undefined) => {
   if (email == null) return null;
@@ -42,7 +42,8 @@ export const getVotes = async () => {
       })
       .from(votesTable)
       .groupBy(votesTable.voteId)
-      .all();
+      .orderBy(({ voteIdCount }) => desc(voteIdCount))
+      .limit(3);
   } catch (error) {
     throw error;
   }
