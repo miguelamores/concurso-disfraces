@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='es'>
       <body className={inter.className}>
         <header className='flex items-center justify-between px-5 py-2 bg-transparent relative z-30'>
           <Link href='/'>
