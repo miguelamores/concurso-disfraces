@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='es'>
-      <body className={inter.className}>
+      <body className={`${inter.className} max-w-md mx-auto`}>
         <header className='flex items-center justify-between px-5 py-2 bg-transparent relative z-30'>
           <Link href='/'>
             <svg
