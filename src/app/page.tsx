@@ -5,6 +5,7 @@ import { auth } from '@/auth';
 import Login from '@/components/Login';
 import Logout from '@/components/Logout';
 import { SessionProvider } from 'next-auth/react';
+import ListOfUsers from '@/components/ListOfUsers';
 
 export default async function Home() {
   const session = await auth();
@@ -41,13 +42,7 @@ export default async function Home() {
           ) : (
             <Login />
           )}
-          <ul className='list-none gap-10 flex flex-col justify-center items-start'>
-            {data.map(item => (
-              <li key={item.id}>
-                <Person person={item} userVoted={userVoted} />
-              </li>
-            ))}
-          </ul>
+          <ListOfUsers data={data} userVoted={userVoted} />
         </section>
         <video
           autoPlay
