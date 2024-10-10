@@ -49,6 +49,14 @@ export const getVotes = async () => {
   }
 };
 
+export const getTotalVotesCount = async () => {
+  try {
+    return await db.select({ total: count() }).from(votesTable).all();
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const login = async () => {
   try {
     await signIn();
